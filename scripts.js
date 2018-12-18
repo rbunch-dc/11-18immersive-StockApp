@@ -31,17 +31,25 @@ $(document).ready(()=>{
             // 1. where to get the JSON
             // 2. Function to run when I'm back
             $.getJSON(url,(theDataJSFoundIfAny)=>{
-                console.log(theDataJSFoundIfAny)
+                // console.log(theDataJSFoundIfAny)
+                let changeClass = "";
+                if(theDataJSFoundIfAny.change > 0){
+                    changeClass = "bg-success";
+                }else{
+                    changeClass = "bg-danger"
+                }
+
                 $('#stock-body').append(`
                     <tr>
                         <td>${theDataJSFoundIfAny.symbol}</td>
                         <td>${theDataJSFoundIfAny.companyName}</td>
                         <td>${theDataJSFoundIfAny.high}</td>
                         <td>${theDataJSFoundIfAny.low}</td>
-                        <td>${theDataJSFoundIfAny.change}</td>
+                        <td class=${changeClass}>${theDataJSFoundIfAny.change}</td>
                     </tr>
                 `); //End append
             }); // end getJSON
         }); // end foreach
+        $('#stock-table').DataTable();
     }); // end submit handler
 }); // end documet.ready()
