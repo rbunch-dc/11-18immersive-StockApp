@@ -39,6 +39,7 @@ $(document).ready(()=>{
                     changeClass = "bg-danger"
                 }
 
+
                 $('#stock-body').append(`
                     <tr>
                         <td>${theDataJSFoundIfAny.symbol}</td>
